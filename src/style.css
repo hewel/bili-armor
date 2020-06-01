@@ -1,0 +1,9 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+* ::selection {
+  @apply _ba-bg-pink-300;
+}
