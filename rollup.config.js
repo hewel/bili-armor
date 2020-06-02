@@ -23,11 +23,19 @@ export default {
         // @name BiliArmor
         // @description 哔哩哔哩工具
         // @author ${pkg.author.name}
-        // @match *://*.bilibili.com/*
+        // @include *://www.bilibili.com/*
         // @version ${pkg.version}
         // ==/UserScript==
         `
         : ''
+    },
+    intro: () => {
+      const process = {
+        env: {
+          NODE_ENV: production ? 'production' : 'development',
+        },
+      }
+      return `const process = ${JSON.stringify(process)}`
     },
   },
   plugins: [

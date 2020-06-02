@@ -3,7 +3,7 @@
 // @name BiliArmor
 // @description 哔哩哔哩工具
 // @author hewel
-// @match *://*.bilibili.com/*
+// @include *://www.bilibili.com/*
 // @require https://cdn.staticfile.org/require.js/2.3.6/require.js
 // @version dev
 // ==/UserScript==

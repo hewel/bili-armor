@@ -8,6 +8,9 @@ module.exports = {
       zIndex: {
         '150': 150,
       },
+      spacing: {
+        '9': '2.25rem',
+      },
     },
   },
   variants: {},
