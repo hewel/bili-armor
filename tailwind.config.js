@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ['./src/**/*'],
+  purge: ['./src/**/*.js', './src/**/*.svelte'],
   theme: {
     extend: {
       inset: {
@@ -13,4 +13,4 @@ module.exports = {
   variants: {},
   plugins: [],
   prefix: '_ba-',
-};
+}
