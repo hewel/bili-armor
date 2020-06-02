@@ -29,14 +29,14 @@ export default {
         `
         : ''
     },
-    intro: () => {
-      const process = {
-        env: {
-          NODE_ENV: production ? 'production' : 'development',
-        },
-      }
-      return `const process = ${JSON.stringify(process)}`
-    },
+    // intro: () => {
+    //   const process = {
+    //     env: {
+    //       NODE_ENV: production ? 'production' : 'development',
+    //     },
+    //   }
+    //   return `const process = ${JSON.stringify(process)}`
+    // },
   },
   plugins: [
     svelte({

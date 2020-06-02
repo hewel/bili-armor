@@ -1,4 +1,4 @@
-import { css } from 'emotion'
+import { css } from 'emotion/dist/emotion.umd.min'
 
 function compatibleStyles() {
   const avatarDecorate = document.querySelector('.avatar-decorate')
