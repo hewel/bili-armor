@@ -7,3 +7,7 @@
 * ::selection {
   @apply _ba-bg-pink-300 _ba-text-white;
 }
+
+.vp-container .avatar-decorate {
+  max-width: inherit;
+}

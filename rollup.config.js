@@ -24,6 +24,7 @@ export default {
         // @description 哔哩哔哩工具
         // @author ${pkg.author.name}
         // @include *://www.bilibili.com/*
+        // @include *://space.bilibili.com/*
         // @version ${pkg.version}
         // ==/UserScript==
         `
