@@ -2,8 +2,8 @@ import App from './App.svelte'
 import './style.css'
 
 const mainEl = document.createElement('div')
-mainEl.classList.add('bili-armor', '_ba-ml-auto')
-document.querySelector('.nav-user-center').before(mainEl)
+mainEl.classList.add('bili-armor', '_ba-ml-3')
+document.querySelector('.nav-user-center').appendChild(mainEl)
 
 const app = new App({
   target: mainEl,

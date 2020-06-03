@@ -1,7 +1,7 @@
-import compatibleStyles from './compatibleStyles'
+import adaptStyles from './adaptStyles'
 
 function initial() {
-  compatibleStyles()
+  adaptStyles()
 }
 
 export default initial
