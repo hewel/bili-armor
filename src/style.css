@@ -7,7 +7,22 @@
 * ::selection {
   @apply _ba-bg-pink-300 _ba-text-white;
 }
-
+html {
+  font-size: 16px !important;
+}
+#app {
+  position: relative;
+}
 .vp-container .avatar-decorate {
   max-width: inherit;
+}
+._ba-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentcolor;
+  overflow: hidden;
+}
+.nav-user-center {
+  @apply _ba-mr-4;
 }

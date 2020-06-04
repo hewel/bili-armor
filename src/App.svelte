@@ -1,13 +1,39 @@
 <script>
   import { onMount } from 'svelte'
-  import { icons } from 'feather-icons'
+  import { SlidersIcon } from 'svelte-feather-icons'
   import clsx from 'clsx'
   import initial from './initial'
-
   import SettingMenu from './Components/SettingMenu.svelte'
 
+  const mainClassNames = clsx(
+    '_ba-absolute',
+    '_ba-top-0',
+    '_ba-right-0',
+    '_ba-h-14',
+    '_ba-mr-2',
+    '_ba-flex',
+    '_ba-items-center',
+    '_ba-z-1000'
+  )
+  const btnClassNames = clsx(
+    '_ba-inline-flex',
+    '_ba-justify-center',
+    '_ba-items-center',
+    '_ba-w-6',
+    '_ba-h-6',
+    '_ba-bg-white',
+    '_ba-rounded-full',
+    '_ba-shadow',
+    '_ba-cursor-pointer',
+    '_ba-text-sm',
+    '_ba-text-gray-900',
+    '_ba-transition',
+    '_ba-duration-200',
+    '_ba-ease-in-out',
+    'hover:_ba-text-pink-400'
+  )
+
   let isMenuShow = false
-  let iconColor = '#4A5568'
 
   onMount(() => {
     initial()
@@ -15,20 +41,15 @@
   const handleToolBtnClick = () => {
     isMenuShow = !isMenuShow
   }
-  const handleToolBtnHover = (out = false) => () => {
-    iconColor = out ? '#4A5568' : '#F687B3'
-  }
 </script>
 
-<main class="_ba-h-9 _ba-mr-1 _ba-flex _ba-items-center _ba-relative">
+<main class={mainClassNames}>
   <span
-    class="_ba-inline-flex _ba-justify-center _ba-items-center _ba-w-6 _ba-h-6
-    _ba-bg-white _ba-rounded-full _ba-shadow-md _ba-cursor-pointer"
+    class={btnClassNames}
     class:_ba-shadow-inner={isMenuShow}
-    on:click={handleToolBtnClick}
-    on:mouseover={handleToolBtnHover()}
-    on:mouseout={handleToolBtnHover(true)}>
-    {@html icons.sliders.toSvg({ width: 12, height: 12, color: iconColor })}
+    class:_ba-bg-gray-100={isMenuShow}
+    on:click={handleToolBtnClick}>
+    <SlidersIcon class="_ba-icon" />
   </span>
   <SettingMenu {isMenuShow} />
 </main>
