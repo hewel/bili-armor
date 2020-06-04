@@ -17,6 +17,6 @@
 </script>
 
 <div class={clsx('_ba-flex', '_ba-justify-between', '_ba-items-center')}>
-  <span class="_ba-text-sm">{title}</span>
+  <span class="_ba-text-xs">{title}</span>
   <Switch bind:checked on:active={handleActive} />
 </div>

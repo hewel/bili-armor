@@ -1,9 +1,11 @@
 <script>
   import { quintOut, quintIn } from 'svelte/easing'
   import { slide } from 'svelte/transition'
+  import { map, has, keys } from 'ramda'
   import clsx from 'clsx'
-  import Switch from './Switch.svelte'
   import SettingItem from './SettingItem.svelte'
+  import config from '../store/config.default'
+  import titleTexts from '../store/titleTexts'
 
   const menuClassNames = clsx(
     '_ba-absolute',
@@ -18,7 +20,14 @@
     '_ba-py-2'
   )
 
+  const SettingList = map(key => ({
+    key,
+    checked: config[key],
+    title: has(key, titleTexts) ? titleTexts[key] : key,
+  }))(keys(config))
+
   export let isMenuShow
+  console.log(SettingList)
 </script>
 
 {#if isMenuShow}
@@ -29,9 +38,8 @@
     <p class="_ba-text-sm _ba-font-bold _ba-text-gray-800 _ba-my-2">
       Bili Armor 设置
     </p>
-    <SettingItem
-      title="这是一个标题"
-      key="key"
-      on:switch={e => console.log(e.detail)} />
+    {#each SettingList as props}
+      <SettingItem {...props} on:switch={e => console.log(e.detail)} />
+    {/each}
   </div>
 {/if}

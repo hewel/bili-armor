@@ -9,7 +9,7 @@
   const handleSwitchClick = ev => {
     ev.preventDefault()
     checked = !checked
-    dispatch('active', !checked)
+    dispatch('active', checked)
   }
 </script>
 
