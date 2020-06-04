@@ -3,7 +3,7 @@ import './style.css'
 
 const mainEl = document.createElement('div')
 mainEl.classList.add('bili-armor')
-document.querySelector('#app').after(mainEl)
+document.body.appendChild(mainEl)
 
 const app = new App({
   target: mainEl,
