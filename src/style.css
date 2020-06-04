@@ -13,7 +13,8 @@ html {
 #app {
   position: relative;
 }
-.vp-container .avatar-decorate {
+.vp-container .avatar-decorate,
+.up-info .u-face .pendant {
   max-width: inherit;
 }
 ._ba-icon {
