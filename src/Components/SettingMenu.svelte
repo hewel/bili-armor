@@ -29,6 +29,9 @@
     <p class="_ba-text-sm _ba-font-bold _ba-text-gray-800 _ba-my-2">
       Bili Armor 设置
     </p>
-    <SettingItem title="这是一个标题" />
+    <SettingItem
+      title="这是一个标题"
+      key="key"
+      on:switch={e => console.log(e.detail)} />
   </div>
 {/if}
