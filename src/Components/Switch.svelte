@@ -6,7 +6,7 @@
 
   export let checked = false
 
-  const handleSwitchClick = ev => {
+  const handleSwitchClick = (ev) => {
     ev.preventDefault()
     checked = !checked
     dispatch('active', checked)
@@ -17,7 +17,7 @@
   class={clsx('_ba-relative', '_ba-h-4', '_ba-w-8', '_ba-inline-block', '_ba-cursor-pointer')}
   on:click={handleSwitchClick}>
   <span
-    class={clsx('_ba-absolute', '_ba-w-full', '_ba-h-full', '_ba-rounded-full', '_ba-shadow-inner', '_ba-left-0', '_ba-top-0', '_ba-z-0', '_ba-transition-colors', '_ba-duration-150', checked ? '_ba-bg-gray-400' : '_ba-bg-gray-200')} />
+    class={clsx('_ba-absolute', '_ba-w-full', '_ba-h-full', '_ba-rounded-full', '_ba-shadow-inner', '_ba-left-0', '_ba-top-0', '_ba-z-0', '_ba-transition-colors', '_ba-duration-150', checked ? '_ba-bg-gray-200' : '_ba-bg-gray-400')} />
   <span
     class={clsx('_ba-inline-flex', '_ba-items-center', '_ba-absolute', '_ba-left-0', '_ba-h-full', '_ba-w-4', '_ba-transition-transform', '_ba-duration-150', '_ba-ease-out', '_ba-z-10', '_ba-transform', checked ? '_ba-translate-x-4' : '_ba-translate-x-0')}>
     <span

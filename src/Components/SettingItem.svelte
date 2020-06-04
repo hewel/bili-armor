@@ -16,7 +16,8 @@
     })
 </script>
 
-<div class={clsx('_ba-flex', '_ba-justify-between', '_ba-items-center')}>
+<div
+  class={clsx('_ba-flex', '_ba-justify-between', '_ba-items-center', '_ba-py-2', '_ba-text-gray-700')}>
   <span class="_ba-text-xs">{title}</span>
   <Switch bind:checked on:active={handleActive} />
 </div>
