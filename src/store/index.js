@@ -25,10 +25,12 @@ function createConfig() {
           initial[key](checked)
         }
         prevConfig = n
-        return {
+        const newConfig = {
           ...n,
           [key]: checked,
         }
+        window.localStorage.setItem('_ba_config', JSON.stringify(newConfig))
+        return newConfig
       }),
     getPrev: () => prevConfig,
     setDef: () => set(defConfig),
