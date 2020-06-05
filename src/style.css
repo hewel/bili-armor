@@ -27,6 +27,3 @@ html {
 .nav-user-center {
   @apply _ba-mr-4;
 }
-.bui-switch {
-  box-sizing: content-box;
-}
