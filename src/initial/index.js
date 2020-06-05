@@ -1,7 +1,7 @@
-import adaptStyles from './adaptStyles'
+import { bindListener, unbindListener } from './spaceKey'
 
-function initial() {
-  adaptStyles()
+const initial = {
+  spaceKey: (checked) => (checked ? bindListener() : unbindListener()),
 }
 
 export default initial

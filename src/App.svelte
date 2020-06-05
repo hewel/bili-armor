@@ -2,7 +2,6 @@
   import { onMount } from 'svelte'
   import { SlidersIcon } from 'svelte-feather-icons'
   import clsx from 'clsx'
-  import initial from './initial'
   import SettingMenu from './Components/SettingMenu.svelte'
 
   const mainClassNames = clsx(
@@ -35,9 +34,6 @@
 
   let isMenuShow = false
 
-  onMount(() => {
-    initial()
-  })
   const handleToolBtnClick = () => {
     isMenuShow = !isMenuShow
   }

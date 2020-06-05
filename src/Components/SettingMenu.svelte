@@ -36,9 +36,6 @@
     settings = value
   })
 
-  afterUpdate(() => {
-    const prevConfig = config.getPrev()
-  })
   onDestroy(() => unsubscribe())
 </script>
 
