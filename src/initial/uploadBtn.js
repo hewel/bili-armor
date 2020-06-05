@@ -23,7 +23,9 @@ const removeStyle = () => {
   const uploadBtn = document.querySelector('.mini-upload')
   if (uploadBtn) {
     uploadBtn.classList.remove(className)
-    uploadBtn.innerHTML = uploadInnerHTML
+    if (uploadInnerHTML) {
+      uploadBtn.innerHTML = uploadInnerHTML
+    }
   }
 }
 

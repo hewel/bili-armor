@@ -1,7 +1,14 @@
+import { omit, keys, has, filter, mergeRight } from 'ramda'
+
 const BaConfig = {
   spaceKey: true,
-  demo: false,
+  upload: false,
 }
 const savedConfig = JSON.parse(window.localStorage.getItem('_ba_config'))
 
-export default savedConfig || BaConfig
+const config = omit(
+  filter((key) => !has(key, BaConfig), keys(savedConfig)),
+  savedConfig
+)
+
+export default mergeRight(config, BaConfig)
