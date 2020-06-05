@@ -4,14 +4,19 @@ import titleTexts from './titleTexts'
 
 function createConfig() {
   const { subscribe, set, update } = writable(defConfig)
+  let prevConfig = null
 
   return {
     subscribe,
     switch: (key) =>
-      update((n) => ({
-        ...n,
-        [key]: !n[key],
-      })),
+      update((n) => {
+        prevConfig = n
+        return {
+          ...n,
+          [key]: !n[key],
+        }
+      }),
+    getPrev: () => prevConfig,
     setDef: () => set(defConfig),
   }
 }

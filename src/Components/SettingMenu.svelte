@@ -25,18 +25,20 @@
   let settings
   const defConfig = get(config)
   const SettingList = map(
-    (key) => ({
+    key => ({
       key,
       checked: defConfig[key],
       title: has(key, titleTexts) ? titleTexts[key] : key,
     }),
     keys(defConfig)
   )
-  const unsubscribe = config.subscribe((value) => {
+  const unsubscribe = config.subscribe(value => {
     settings = value
   })
 
-  afterUpdate(() => {})
+  afterUpdate(() => {
+    const prevConfig = config.getPrev()
+  })
   onDestroy(() => unsubscribe())
 </script>
 
@@ -52,7 +54,7 @@
       <SettingItem
         {...props}
         checked={settings[props.key]}
-        on:switch={(e) => config.switch(e.detail.key)} />
+        on:switch={e => config.switch(e.detail.key)} />
     {/each}
   </div>
 {/if}
