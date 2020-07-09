@@ -10,7 +10,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production rollup -c",
     "dev": "rollup -c -w",
-    "commit": "git-cz"
+    "cz": "git-cz"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
