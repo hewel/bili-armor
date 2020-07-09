@@ -10,9 +10,6 @@
 // ==/UserScript==
 ;(function () {
   'use strict'
-  requirejs([
-    'http://localhost:5000/dist/bundle.js',
-    'http://localhost:35729/livereload.js?snipver=1',
-  ])
+  requirejs(['http://localhost:5000/dist/bundle.js'])
   // Your code here...
 })()
