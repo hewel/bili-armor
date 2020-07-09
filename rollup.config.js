@@ -1,13 +1,78 @@
 import svelte from 'rollup-plugin-svelte'
 import resolve from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
 import commonjs from '@rollup/plugin-commonjs'
 import livereload from 'rollup-plugin-livereload'
 import postcss from 'rollup-plugin-postcss'
 import { terser } from 'rollup-plugin-terser'
 import babel from '@rollup/plugin-babel'
+import { pipe, pair, fromPairs, map, keys } from 'ramda'
+import { icons } from 'feather-icons'
 import pkg from './package.json'
 
 const production = !process.env.ROLLUP_WATCH
+
+const banner = `
+// ==UserScript==
+// @name BiliArmor
+// @description 哔哩哔哩工具
+// @author ${pkg.author.name}
+// @include *://www.bilibili.com/*
+// @include *://space.bilibili.com/*
+// @version ${pkg.version}
+// ==/UserScript==
+`
+
+const terserOpts = () => {
+  const keywords = [
+    '@name',
+    '@namespace',
+    '@version',
+    '@author',
+    '@description',
+    '@homepage',
+    '@homepageURL',
+    '@website',
+    '@source',
+    '@icon',
+    '@iconURL',
+    '@defaulticon',
+    '@icon64',
+    '@icon64URL',
+    '@updateURL',
+    '@downloadURL',
+    '@supportURL',
+    '@include',
+    '@match',
+    '@exclude',
+    '@require',
+    '@resource',
+    '@connect',
+    '@run-at',
+    '@grant',
+    '@noframes',
+    '@unwrap',
+    '@nocompat',
+    'UserScript',
+  ]
+  return {
+    output: {
+      comments: (_node, { type, value }) =>
+        type === 'comment1' && new RegExp(keywords.join('|'), 'i').test(value),
+    },
+  }
+}
+
+const replaceOpts = () => {
+  const iconToPair = (key) => pair(`icon__${key}`, icons[key].toSvg())
+  return pipe(keys, map(iconToPair), fromPairs)(icons)
+}
+
+const postcssPlugins = [
+  require('tailwindcss'),
+  production && require('autoprefixer'),
+  require('postcss-csso'),
+].filter((p) => p)
 
 export default {
   input: 'src/main.js',
@@ -17,18 +82,7 @@ export default {
     sourcemap: !production,
     file: production ? 'public/BiliArmor.js' : 'public/dist/bundle.js',
     banner: () => {
-      return production
-        ? `
-        // ==UserScript==
-        // @name BiliArmor
-        // @description 哔哩哔哩工具
-        // @author ${pkg.author.name}
-        // @include *://www.bilibili.com/*
-        // @include *://space.bilibili.com/*
-        // @version ${pkg.version}
-        // ==/UserScript==
-        `
-        : ''
+      return production ? banner : ''
     },
     // intro: () => {
     //   const process = {
@@ -40,6 +94,12 @@ export default {
     // },
   },
   plugins: [
+    replace({
+      ...replaceOpts(),
+      'process.env.NODE_ENV': JSON.stringify(
+        production ? 'production' : 'development'
+      ),
+    }),
     svelte({
       // enable run-time checks when not in production
       dev: !production,
@@ -52,11 +112,7 @@ export default {
     }),
     postcss({
       sourcemap: !production,
-      plugins: [
-        require('tailwindcss'),
-        production && require('autoprefixer'),
-        require('postcss-csso'),
-      ].filter((p) => p),
+      plugins: postcssPlugins,
     }),
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
@@ -75,51 +131,15 @@ export default {
 
     // Watch the `public` directory and refresh the
     // browser on changes when not in production
-    !production && livereload('public'),
+    !production &&
+      livereload({
+        watch: 'public',
+        clientUrl: 'http://localhost:35729/livereload.js?snipver=1',
+      }),
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
-    production &&
-      terser({
-        output: {
-          comments: (node, { type, value }) => {
-            const keywords = [
-              '@name',
-              '@namespace',
-              '@version',
-              '@author',
-              '@description',
-              '@homepage',
-              '@homepageURL',
-              '@website',
-              '@source',
-              '@icon',
-              '@iconURL',
-              '@defaulticon',
-              '@icon64',
-              '@icon64URL',
-              '@updateURL',
-              '@downloadURL',
-              '@supportURL',
-              '@include',
-              '@match',
-              '@exclude',
-              '@require',
-              '@resource',
-              '@connect',
-              '@run-at',
-              '@grant',
-              '@noframes',
-              '@unwrap',
-              '@nocompat',
-              'UserScript',
-            ]
-            return (
-              type === 'comment1' && new RegExp(keywords.join('|'), 'i').test(value)
-            )
-          },
-        },
-      }),
+    production && terser(terserOpts()),
   ],
   watch: {
     clearScreen: false,
