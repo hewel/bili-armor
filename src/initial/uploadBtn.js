@@ -6,7 +6,7 @@ const className = css`
   align-items: center;
   width: 36px !important;
   font-size: 24px;
-  background-color: transparent !important;
+  border-radius: 8px;
 `
 let uploadInnerHTML = null
 
