@@ -1,3 +1,5 @@
+import MethodVideo from '../methods/video'
+
 const handelKeyDown = (event) => {
   const isInput =
     event.target.nodeName === 'INPUT' || event.target.nodeName === 'TEXTAREA'
@@ -5,10 +7,10 @@ const handelKeyDown = (event) => {
     return
   }
   if (event.keyCode === 32) {
-    const playerEl = document.querySelector('.bilibili-player-video video')
-    if (playerEl) {
+    const video = new MethodVideo()
+    if (video._checkEl()) {
       event.preventDefault()
-      playerEl.paused ? playerEl.play() : playerEl.pause()
+      video.paused ? video.play() : video.pause()
     }
   }
 }
