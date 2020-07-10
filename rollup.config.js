@@ -8,6 +8,7 @@ import { terser } from 'rollup-plugin-terser'
 import babel from '@rollup/plugin-babel'
 import { pipe, pair, fromPairs, map, keys } from 'ramda'
 import { icons } from 'feather-icons'
+import CFonts from 'cfonts'
 import pkg from './package.json'
 
 const production = !process.env.ROLLUP_WATCH
@@ -73,6 +74,9 @@ const postcssPlugins = [
   production && require('autoprefixer'),
   require('postcss-csso'),
 ].filter((p) => p)
+const logoAscii = (text) =>
+  CFonts.render(text, { font: 'block', maxLength: Math.round(text.length / 2) })
+    .string
 
 export default {
   input: 'src/main.js',
@@ -99,6 +103,7 @@ export default {
       'process.env.NODE_ENV': JSON.stringify(
         production ? 'production' : 'development'
       ),
+      __BANNER__: production ? logoAscii('BiliArmor suit up!'): 'LOGO',
     }),
     svelte({
       // enable run-time checks when not in production

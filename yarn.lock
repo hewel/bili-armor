@@ -1426,6 +1426,14 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001043, caniuse-lite@^1.0.30001061:
   resolved "https://registry.npm.taobao.org/caniuse-lite/download/caniuse-lite-1.0.30001077.tgz?cache=0&sync_timestamp=1591158912773&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcaniuse-lite%2Fdownload%2Fcaniuse-lite-1.0.30001077.tgz#5d7da6a120b08d9f4fd94823786ecb454aaa5626"
   integrity sha1-XX2moSCwjZ9P2UgjeG7LRUqqViY=
 
+cfonts@^2.8.5:
+  version "2.8.5"
+  resolved "https://repo.huaweicloud.com/repository/npm/cfonts/-/cfonts-2.8.5.tgz#708b845e19f54f098d6aa0d24ba9f0705fa916ad"
+  integrity sha512-NZaKVhhHkIehWe8UlLBpX2wh5uZxFJTqNKP55ZAFrrYAjhEGb3HRJ/KQWHj8NJl52EH1WS190ZBp+FH8EdyDXg==
+  dependencies:
+    chalk "^4.1.0"
+    window-size "^1.1.1"
+
 chalk@2.4.1:
   version "2.4.1"
   resolved "https://registry.npm.taobao.org/chalk/download/chalk-2.4.1.tgz#18c49ab16a037b6eb0152cc83e3471338215b66e"
@@ -1467,6 +1475,14 @@ chalk@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npm.taobao.org/chalk/download/chalk-4.0.0.tgz#6e98081ed2d17faab615eb52ac66ec1fe6209e72"
   integrity sha1-bpgIHtLRf6q2FetSrGbsH+YgnnI=
+  dependencies:
+    ansi-styles "^4.1.0"
+    supports-color "^7.1.0"
+
+chalk@^4.1.0:
+  version "4.1.0"
+  resolved "https://repo.huaweicloud.com/repository/npm/chalk/-/chalk-4.1.0.tgz#4e14870a618d9e2edd97dd8345fd9d9dc315646a"
+  integrity sha512-qwx12AxXe2Q5xQ43Ac//I6v5aXTipYrSESdOgzrN+9XjgEpyjpKuvSGaN4qE93f7TQTlerQQ8S+EQ0EyDoVL1A==
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
@@ -5399,6 +5415,14 @@ widest-line@^2.0.0:
   integrity sha1-dDh2RzDsfvQ4HOTfgvuYpTFCo/w=
   dependencies:
     string-width "^2.1.1"
+
+window-size@^1.1.1:
+  version "1.1.1"
+  resolved "https://repo.huaweicloud.com/repository/npm/window-size/-/window-size-1.1.1.tgz#9858586580ada78ab26ecd6978a6e03115c1af20"
+  integrity sha512-5D/9vujkmVQ7pSmc0SCBmHXbkv6eaHwXEx65MywhmUMsI8sGqJ972APq1lotfcwMKPFLuCFfL8xGHLIp7jaBmA==
+  dependencies:
+    define-property "^1.0.0"
+    is-number "^3.0.0"
 
 word-wrap@^1.0.3, word-wrap@^1.2.3:
   version "1.2.3"
