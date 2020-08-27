@@ -10,6 +10,7 @@ function init() {
       initial[key](checked)
     }
   }, defConfig)
+  console.info(`${'%c'}__BANNER__`, 'color: #00a1d6')
 }
 
 function createConfig() {

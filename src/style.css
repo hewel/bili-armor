@@ -5,7 +5,8 @@
 @tailwind utilities;
 
 * ::selection {
-  @apply _ba-bg-pink-300 _ba-text-white;
+  @apply _ba-bg-pink-300;
+  @apply _ba-text-white;
 }
 html {
   font-size: 16px !important;

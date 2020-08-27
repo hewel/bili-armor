@@ -1,1 +1,1 @@
-export { css, cx } from 'emotion/dist/emotion.umd.min'
+export { css, cx } from 'emotion'
